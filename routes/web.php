@@ -1,5 +1,5 @@
 <?php
-
+Use App\News;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', 'CreateController@home');
-Route::get('/create', 'CreateController@create');
-Route::post('/insert', 'CreateController@add');
-Route::get('/update/{id}', 'CreateController@update');
-Route::post('/edit/{id}', 'CreateController@edit');
-Route::get('/delete/{id}', 'CreateController@delete');
-Route::get('/read/{id}', 'CreateController@read');
+Route::get('/news', 'NewsController@index');
+Route::get('/news/{id}', 'NewsController@show');
+Route::post('/news', 'NewsController@store');
+Route::put('/news/{id}', 'NewsController@update');
+Route::delete('/news/{id}', 'NewsController@delete');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
